@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Siddhartha Mani — Technical Writer • AI & Cloud Documentation</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg:#071026;
+      --panel:#0f1724;
+      --muted:#94a3b8;
+      --accent1:#7c3aed;
+      --accent2:#06b6d4;
+    }
+    html,body{height:100%}
+    body {
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 15% 10%, rgba(124,58,237,0.12), transparent),
+                  radial-gradient(900px 500px at 85% 90%, rgba(6,182,212,0.08), transparent),
+                  var(--bg);
+      color: #cbd5e1;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
+
+    /* Futuristic subtle grid */
+    .futuristic-grid{
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(0deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 120px 120px, 120px 120px;
+      mix-blend-mode: overlay;
+      pointer-events:none;
+      opacity:0.6;
+      transform: translateZ(0);
+    }
+
+    /* Hero style */
+    .hero-card{
+      background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(124,58,237,0.12);
+      box-shadow: 0 10px 40px rgba(2,6,23,0.6), inset 0 -1px 0 rgba(255,255,255,0.02);
+      backdrop-filter: blur(6px);
+    }
+
+    .neon {
+      background: linear-gradient(90deg, var(--accent2), var(--accent1));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip:text;
+      color: transparent;
+    }
+
+    /* Typing cursor */
+    .typed-cursor{
+      display:inline-block;
+      width:8px;
+      height:22px;
+      background: linear-gradient(180deg, var(--accent2), var(--accent1));
+      margin-left:6px;
+      border-radius:2px;
+      animation: blink 0.9s infinite;
+      vertical-align:middle;
+    }
+    @keyframes blink { 50%{ opacity:0 } }
+
+    /* Card hover */
+    .glass-card{
+      transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s;
+    }
+    .glass-card:hover{
+      transform: translateY(-8px);
+      box-shadow: 0 30px 60px rgba(2,6,23,.6), 0 4px 20px rgba(124,58,237,0.06);
+    }
+
+    /* editable region */
+    .editable {
+      border-radius: 8px;
+      padding: 0.75rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
+      border: 1px dashed rgba(148,163,184,0.06);
+      min-height:48px;
+    }
+    .editable[contenteditable="true"] {
+      outline: 3px solid rgba(124,58,237,0.08);
+      border-style: solid;
+      border-color: rgba(6,182,212,0.06);
+    }
+
+    /* small screens tweak */
+    @media (max-width:768px){
+      .hero-title { font-size: 1.6rem; }
+    }
+
+    /* subtle pulse on CTA */
+    .pulse {
+      animation: pulse 2.5s infinite;
+    }
+    @keyframes pulse{
+      0%{ box-shadow: 0 0 0 0 rgba(124,58,237,0.08) }
+      70%{ box-shadow: 0 0 40px 6px rgba(124,58,237,0.02) }
+      100%{ box-shadow: 0 0 0 0 rgba(124,58,237,0.00) }
+    }
+
+    /* simple responsive container */
+    .container { max-width:1100px; margin-left:auto; margin-right:auto; padding-left:1.25rem; padding-right:1.25rem; }
+  </style>
+</head>
+
+<body>
+  <div class="futuristic-grid" aria-hidden="true"></div>
+
+  <!-- HERO -->
+  <header class="min-h-screen flex items-center justify-center p-8 relative">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <div class="hero-card p-8 rounded-2xl">
+            <div class="flex items-center gap-4">
+              <img src="https://placehold.co/96x96/071026/7c3aed?text=SM" alt="Siddhartha Mani" class="w-20 h-20 rounded-full ring-2 ring-indigo-700/30 shadow-xl">
+              <div>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-slate-100 hero-title">
+                  Siddhartha Mani <span class="ml-2 text-sm text-slate-400">•</span>
+                </h1>
+                <p class="mt-1 text-slate-400">Information Developer • Technical Writer specializing in AI, API docs & cloud-native automation</p>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <h2 class="text-2xl md:text-3xl font-semibold neon">Hiring Technical Writer</h2>
+              <div class="mt-3 flex items-center gap-3">
+                <div id="typed-text" class="text-lg text-slate-200"></div><span class="typed-cursor" aria-hidden="true"></span>
+              </div>
+
+              <p class="mt-5 text-slate-400 max-w-xl leading-relaxed">
+                I turn complex engineering and AI systems into clear, developer-focused documentation: APIs, RAG systems, cloud automation runbooks, and structured content (DITA/XML).
+                Below are my past employers with editable sections so you can add responsibilities and project names for each role.
+              </p>
+
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a href="mailto:mani.siddhartha@gmail.com" class="inline-flex items-center gap-2 bg-gradient-to-r from-sky-500 to-violet-500 text-white py-3 px-5 rounded-full font-semibold shadow-lg hover:opacity-95 transition transform hover:-translate-y-0.5 pulse" aria-label="Email Siddhartha">
+                  Hire me
+                </a>
+                <a href="#" class="inline-flex items-center gap-2 bg-slate-800 text-slate-200 py-3 px-5 rounded-full font-medium hover:bg-slate-700 transition" aria-label="View resume">
+                  View resume
+                </a>
+                <a href="https://www.linkedin.com/in/siddhartha-mani-98696073/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-transparent border border-slate-700 text-slate-200 py-3 px-4 rounded-full hover:bg-slate-800 transition" aria-label="LinkedIn profile">
+                  LinkedIn
+                </a>
+              </div>
+
+              <div class="mt-6 text-sm text-slate-500">
+                <span class="mr-2">Open to: Remote, Contract, and Full-time</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI-style visual / quick highlights -->
+        <div>
+          <div class="p-6 hero-card rounded-2xl glass-card">
+            <h3 class="text-lg font-bold text-slate-100">Quick highlights</h3>
+            <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-300">
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-sky-400 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M12 8v4l3 3"></path></svg>
+                <div>
+                  <div class="text-sm font-semibold neon">AI Documentation</div>
+                  <div class="text-xs text-slate-400">RAG systems, prompts, LLM integrations</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-indigo-400 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3 7h18M3 12h12M3 17h18"></path></svg>
+                <div>
+                  <div class="text-sm font-semibold neon">Structured Content</div>
+                  <div class="text-xs text-slate-400">DITA, XML, Oxygen, CCMS</div>
+                </div>
+              </li>
+
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-emerald-300 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M12 4v16M4 12h16"></path></svg>
+                <div>
+                  <div class="text-sm font-semibold neon">Automation + Tools</div>
+                  <div class="text-xs text-slate-400">Playwright, LangChain, Jenkins, Postman</div>
+                </div>
+              </li>
+
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-pink-400 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M12 2l3 7h7l-5.5 4.1L20 22l-8-5-8 5 1.5-8.9L0 9h7l3-7z"></path></svg>
+                <div>
+                  <div class="text-sm font-semibold neon">Impact</div>
+                  <div class="text-xs text-slate-400">Improved QA efficiency, accuracy & developer adoption</div>
+                </div>
+              </li>
+            </ul>
+
+            <div class="mt-6 text-xs text-slate-400">
+              Tip: Click Edit on any company below to add responsibilities or project names. Your changes are saved locally to this browser.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container pb-28">
+    <!-- EXPERIENCE -->
+    <section id="experience" class="mt-6">
+      <h2 class="text-3xl font-bold neon text-center">Work History</h2>
+      <p class="text-center text-slate-400 mt-2 max-w-2xl mx-auto">Click "Edit" to add responsibilities and project names for each company. Edits persist locally in this browser (localStorage).</p>
+
+      <div class="mt-8 grid gap-6">
+        <!-- Company Card Template - Kreatio -->
+        <article class="glass-card hero-card p-6 rounded-2xl grid md:grid-cols-5 gap-6 items-start">
+          <div class="md:col-span-1">
+            <div class="text-slate-300 font-semibold">Kreatio</div>
+            <div class="text-sm text-slate-500">2015 — 2017</div>
+            <div class="mt-3 text-xs text-slate-400">Role: Technical Writer</div>
+          </div>
+
+          <div class="md:col-span-4 space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-semibold text-slate-100">Kreatio — Details</h3>
+              <div class="flex gap-2">
+                <button class="btn-edit rounded-md text-sm px-3 py-1 bg-indigo-600/10 text-indigo-300 hover:bg-indigo-600/20" data-target="kreatio">Edit</button>
+                <button class="btn-save rounded-md text-sm px-3 py-1 bg-emerald-700/10 text-emerald-300 hover:bg-emerald-700/20" data-target="kreatio">Save</button>
+                <button class="btn-reset rounded-md text-sm px-3 py-1 bg-red-700/8 text-rose-300 hover:bg-red-700/14" data-target="kreatio">Reset</button>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm text-slate-400 mb-2">Responsibilities</label>
+              <div id="kreatio-resp" class="editable" contenteditable="false" role="textbox" aria-multiline="true">
+                • Write product guides, user flows and release notes.<br>• Produce quick-starts and API overviews for internal tools.
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm text-slate-400 mb-2">Project names / highlights</label>
+              <div id="kreatio-proj" class="editable" contenteditable="false">
+                • Project: "API Onboarding" — created developer onboarding docs and examples.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Unisys -->
+        <article class="glass-card hero-card p-6 rounded-2xl grid md:grid-cols-5 gap-6 items-start">
+          <div class="md:col-span-1">
+            <div class="text-slate-300 font-semibold">Unisys</div>
+            <div class="text-sm text-slate-500">2017 — 2020</div>
+            <div class="mt-3 text-xs text-slate-400">Role: Information Developer</div>
+          </div>
+
+          <div class="md:col-span-4 space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-semibold text-slate-100">Unisys — Details</h3>
+              <div class="flex gap-2">
+                <button class="btn-edit rounded-md text-sm px-3 py-1 bg-indigo-600/10 text-indigo-300 hover:bg-indigo-600/20" data-target="unisys">Edit</button>
+                <button class="btn-save rounded-md text-sm px-3 py-1 bg-emerald-700/10 text-emerald-300 hover:bg-emerald-700/20" data-target="unisys">Save</button>
+                <button class="btn-reset rounded-md text-sm px-3 py-1 bg-red-700/8 text-rose-300 hover:bg-red-700/14" data-target="unisys">Reset</button>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm text-slate-400 mb-2">Responsibilities</label>
+              <div id="unisys-resp" class="editable" contenteditable="false">
+                • Create operator manuals and system onboarding guides.<br>• Coordinate content with engineering and QA teams.
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm text-slate-400 mb-2">Project names / highlights</label>
+              <div id="unisys-proj" class="editable" contenteditable="false">
+                • Project: "Cloud Setup Runbooks" — authored step-by-step provisioning docs and diagrams.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Xylem -->
+        <article class="glass-card hero-card p-6 rounded-2xl grid md:grid-cols-5 gap-6 items-start">
+          <div class="md:col-span-1">
+            <div class="text-slate-300 font-semibold">Xylem</div>
+            <div class="text-sm text-slate-500">2020 — 2022</div>
+            <div class="mt-3 text-xs text-slate-400">Role: Technical Documentation</div>
+          </div>
+
+          <div class="md:col-span-4 space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-semibold text-slate-100">Xylem — Details</h3>
+              <div class="flex gap-2">
+                <button class="btn-edit rounded-md text-sm px-3 py-1 bg-indigo-600/10 text-indigo-300 hover:bg-indigo-600/20" data-target="xylem">Edit</button>
+                <button class="btn-save rounded-md text-sm px-3 py-1 bg-emerald-700/10 text-emerald-300 hover:bg-emerald-700/20" data-target="xylem">Save</button>
+                <button class="btn-reset rounded-md text-sm px-3 py-1 bg-red-700/8 text-rose-300 hover:bg-red-700/14" data-target="xylem">Reset</button>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm text-slate-400 mb-2">Responsibilities</label>
+              <div id="xylem-resp" class="editable" contenteditable="false">
+                • Produce cloud integration guides and API reference docs.<br>• Maintain product release notes and developer examples.
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm text-slate-400 mb-2">Project names / highlights</label>
+              <div id="xylem-proj" class="editable" contenteditable="false">
+                • Project: "Telemetry Integration" — documented SDK usage and troubleshooting workflows.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- IBM -->
+        <article class="glass-card hero-card p-6 rounded-2xl grid md:grid-cols-5 gap-6 items-start">
+          <div class="md:col-span-1">
+            <div class="text-slate-300 font-semibold">IBM</div>
+            <div class="text-sm text-slate-500">2022 — current</div>
+            <div class="mt-3 text-xs text-slate-400">Role: Information Developer • AI Documentation</div>
+          </div>
+
+          <div class="md:col-span-4 space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-semibold text-slate-100">IBM — Details</h3>
+              <div class="flex gap-2">
+                <button class="btn-edit rounded-md text-sm px-3 py-1 bg-indigo-600/10 text-indigo-300 hover:bg-indigo-600/20" data-target="ibm">Edit</button>
+                <button class="btn-save rounded-md text-sm px-3 py-1 bg-emerald-700/10 text-emerald-300 hover:bg-emerald-700/20" data-target="ibm">Save</button>
+                <button class="btn-reset rounded-md text-sm px-3 py-1 bg-red-700/8 text-rose-300 hover:bg-red-700/14" data-target="ibm">Reset</button>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm text-slate-400 mb-2">Responsibilities</label>
+              <div id="ibm-resp" class="editable" contenteditable="false">
+                • Build RAG-based doc Q&A systems, author API docs and developer guides.<br>• Collaborate with ML engineers and platform teams to document agent flows.
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm text-slate-400 mb-2">Project names / highlights</label>
+              <div id="ibm-proj" class="editable" contenteditable="false">
+                • Project: "Power Virtual Server" — automated hyperlink validation and RAG Q&A integrations.
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects quick showcase (kept from the original page) -->
+    <section id="projects" class="mt-12">
+      <h2 class="text-3xl font-bold neon text-center">Selected Projects</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="hero-card p-6 rounded-xl">
+          <h4 class="font-semibold text-slate-100">RAG — AI Document Q&A</h4>
+          <p class="text-slate-400 mt-3">Designed retrieval and embedding workflows to improve developer-facing answers and reduce ambiguity in documentation lookup.</p>
+        </div>
+
+        <div class="hero-card p-6 rounded-xl">
+          <h4 class="font-semibold text-slate-100">Playwright Extractors</h4>
+          <p class="text-slate-400 mt-3">Created reliable extraction modules for JavaScript-heavy pages to feed downstream RAG indexes.</p>
+        </div>
+
+        <div class="hero-card p-6 rounded-xl">
+          <h4 class="font-semibold text-slate-100">Automated QA Tooling</h4>
+          <p class="text-slate-400 mt-3">Built Python-based link validation and reporting, removing repetitive QA steps and accelerating release cycles.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800 mt-16">
+    <div class="container py-10 text-center">
+      <div class="text-slate-400">© 2025 Siddhartha Mani — Information Developer. Built for AI & Docs.</div>
+      <div class="mt-4 text-sm">
+        <a href="mailto:mani.siddhartha@gmail.com" class="text-sky-400 hover:underline">mani.siddhartha@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Typing effect (updated phrases)
+    const typingText = [
+      "AI-focused Technical Writer",
+      "Developer & API Documentation",
+      "RAG Systems • Structured Content"
+    ];
+    let typeIndex = 0, charIndex = 0;
+    const textElement = document.getElementById('typed-text');
+
+    function type() {
+      if (!textElement) return;
+      if (charIndex < typingText[typeIndex].length) {
+        textElement.textContent += typingText[typeIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, 70);
+      } else {
+        setTimeout(erase, 1800);
+      }
+    }
+    function erase() {
+      if (!textElement) return;
+      if (charIndex > 0) {
+        textElement.textContent = typingText[typeIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, 30);
+      } else {
+        typeIndex = (typeIndex + 1) % typingText.length;
+        setTimeout(type, 500);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => setTimeout(type, 600));
+
+    /* Editable experience: localStorage-based saving per company */
+    const companies = {
+      kreatio: {
+        respId: 'kreatio-resp',
+        projId: 'kreatio-proj',
+        default: {
+          resp: '• Write product guides, user flows and release notes.<br>• Produce quick-starts and API overviews for internal tools.',
+          proj: '• Project: "API Onboarding" — created developer onboarding docs and examples.'
+        }
+      },
+      unisys: {
+        respId: 'unisys-resp',
+        projId: 'unisys-proj',
+        default: {
+          resp: '• Create operator manuals and system onboarding guides.<br>• Coordinate content with engineering and QA teams.',
+          proj: '• Project: "Cloud Setup Runbooks" — authored step-by-step provisioning docs and diagrams.'
+        }
+      },
+      xylem: {
+        respId: 'xylem-resp',
+        projId: 'xylem-proj',
+        default: {
+          resp: '• Produce cloud integration guides and API reference docs.<br>• Maintain product release notes and developer examples.',
+          proj: '• Project: "Telemetry Integration" — documented SDK usage and troubleshooting workflows.'
+        }
+      },
+      ibm: {
+        respId: 'ibm-resp',
+        projId: 'ibm-proj',
+        default: {
+          resp: '• Build RAG-based doc Q&A systems, author API docs and developer guides.<br>• Collaborate with ML engineers and platform teams to document agent flows.',
+          proj: '• Project: "Power Virtual Server" — automated hyperlink validation and RAG Q&A integrations.'
+        }
+      }
+    };
+
+    // Initialize content from localStorage or defaults
+    function initExperience() {
+      Object.keys(companies).forEach(key => {
+        const cfg = companies[key];
+        const respEl = document.getElementById(cfg.respId);
+        const projEl = document.getElementById(cfg.projId);
+        const saved = localStorage.getItem('exp-'+key);
+        if (saved) {
+          try {
+            const obj = JSON.parse(saved);
+            respEl.innerHTML = obj.resp || cfg.default.resp;
+            projEl.innerHTML = obj.proj || cfg.default.proj;
+          } catch(e) {
+            respEl.innerHTML = cfg.default.resp;
+            projEl.innerHTML = cfg.default.proj;
+          }
+        } else {
+          respEl.innerHTML = cfg.default.resp;
+          projEl.innerHTML = cfg.default.proj;
+        }
+        // attach blur autosave
+        [respEl, projEl].forEach(el => {
+          el.addEventListener('blur', () => {
+            if (el.getAttribute('contenteditable') === 'true') {
+              saveCompany(key);
+            }
+          });
+        });
+      });
+    }
+
+    // Save a company's fields to localStorage
+    function saveCompany(key) {
+      const cfg = companies[key];
+      const respEl = document.getElementById(cfg.respId);
+      const projEl = document.getElementById(cfg.projId);
+      const payload = { resp: respEl.innerHTML, proj: projEl.innerHTML };
+      localStorage.setItem('exp-'+key, JSON.stringify(payload));
+      // toggle off editing if still editable
+      [respEl,projEl].forEach(el => el.setAttribute('contenteditable','false'));
+      // small visual feedback
+      flashBorder(cfg.respId);
+      flashBorder(cfg.projId);
+    }
+
+    // Reset to defaults
+    function resetCompany(key) {
+      const cfg = companies[key];
+      const respEl = document.getElementById(cfg.respId);
+      const projEl = document.getElementById(cfg.projId);
+      respEl.innerHTML = cfg.default.resp;
+      projEl.innerHTML = cfg.default.proj;
+      localStorage.removeItem('exp-'+key);
+      [respEl,projEl].forEach(el => el.setAttribute('contenteditable','false'));
+    }
+
+    // Toggle edit mode
+    function toggleEdit(key){
+      const cfg = companies[key];
+      const respEl = document.getElementById(cfg.respId);
+      const projEl = document.getElementById(cfg.projId);
+      const isEditing = respEl.getAttribute('contenteditable') === 'true';
+      [respEl,projEl].forEach(el => el.setAttribute('contenteditable', isEditing ? 'false' : 'true'));
+      if (!isEditing) {
+        respEl.focus();
+      }
+    }
+
+    function flashBorder(id){
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.style.transition = 'box-shadow .28s';
+      el.style.boxShadow = '0 0 0 4px rgba(124,58,237,0.06)';
+      setTimeout(()=> el.style.boxShadow = '', 700);
+    }
+
+    // Hook buttons
+    document.addEventListener('DOMContentLoaded', () => {
+      initExperience();
+      document.querySelectorAll('.btn-edit').forEach(btn=>{
+        btn.addEventListener('click', ()=> toggleEdit(btn.dataset.target));
+      });
+      document.querySelectorAll('.btn-save').forEach(btn=>{
+        btn.addEventListener('click', ()=> saveCompany(btn.dataset.target));
+      });
+      document.querySelectorAll('.btn-reset').forEach(btn=>{
+        btn.addEventListener('click', ()=> {
+          if (confirm('Reset content for ' + btn.dataset.target + ' to defaults?')) {
+            resetCompany(btn.dataset.target);
+          }
+        });
+      });
+    });
+
+    // Accessibility: allow keyboard saving with Ctrl+S when editing
+    document.addEventListener('keydown', (e)=>{
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
+        // find first editable element
+        const editing = document.querySelector('[contenteditable="true"]');
+        if (editing) {
+          e.preventDefault();
+          // find which company contains it
+          const parentArticle = editing.closest('article');
+          if (!parentArticle) return;
+          // determine target id by checking contained editable id
+          const id = editing.id || '';
+          const found = Object.keys(companies).find(k => id.startsWith(k));
+          if (found) saveCompany(found);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
