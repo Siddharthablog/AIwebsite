@@ -32,9 +32,9 @@ The following list of commands are available with command-line interface (CLI) f
 
 **Available Commands**:
 
-- `datacenter`:    IBM Cloud Power Virtual Server Datacenters used across the world.
-- `disaster-recovery`:    List disaster recovery locations for the current region or all regions.
-- `image`:    IBM Cloud Power Virtual Server Images for os.
+- `datacenter`:    IBM Cloud Power Virtual Server Datacenters.
+- `disaster-recovery`:    List disaster recovery locations for the current region.
+- `image`:    IBM Cloud Power Virtual Server Images.
 - `instance`:    IBM Cloud Power Virtual Server Instances.
 - `job`:    IBM Cloud Power Virtual Server Jobs.
 - `network-peer`:    IBM Cloud Power Virtual Server Network Peers.
